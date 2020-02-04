@@ -22,6 +22,8 @@ public class ApplicationUser implements UserDetails {
     private Date createdAt;
     String firstName;
 
+    @OneToMany(mappedBy = "appUser")
+    public List<Meme> memes;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

@@ -1,5 +1,7 @@
 package io.romellpineda.memestagram.controllers;
 
+import io.romellpineda.memestagram.models.ApplicationUser;
+import io.romellpineda.memestagram.models.ApplicationUserRepository;
 import io.romellpineda.memestagram.models.Meme;
 import io.romellpineda.memestagram.models.MemeRepository;
 import org.springframework.stereotype.Controller;
@@ -16,9 +18,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.Principal;
 
 @Controller
 public class MemeController {
+
+    @Autowired
+    ApplicationUserRepository appUserRepo;
   
     @Autowired
     MemeRepository memeRepo;
@@ -55,14 +61,14 @@ public class MemeController {
         }
         return new RedirectView("/generator");
     }
-  
+
     @PostMapping("/meme/add")
-//    For future route
-//    public RedirectView addMeme(String name, String url) {
-    public void addMeme(String name, String url) {
+    public RedirectView addMeme(Principal p, String name, String url) {
         Meme freshMeme = new Meme(name, url);
+        ApplicationUser poster = appUserRepo.findByUsername(p.getName());
+        poster.memes.add(freshMeme);
+        appUserRepo.save(poster);
         memeRepo.save(freshMeme);
-        System.out.println("/////" + name + " " + url);
-        System.out.println(freshMeme.name);
+        return new RedirectView("/");
     }
 }

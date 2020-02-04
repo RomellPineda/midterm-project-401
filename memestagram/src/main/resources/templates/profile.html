@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Title</title>
 
 </head>
@@ -13,11 +14,30 @@
 <h2 th:text="${usernameWeAreVisiting.firstName}"></h2>
 <h2 th:text="${usernameWeAreVisiting.bio}"></h2>
 
+<h2>Add a Meme!</h2>
+
+<div class="row">
+    <form action="/meme/add" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="memeName" type="text" class="validate" name="name">
+                <label for="memeName">Meme Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="memeUrl" type="text" class="validate" name="url">
+                <label for="memeUrl">URL</label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Post Meme">
+        </div>
+    </form>
+</div>
 
 
-
-
-<ul>
+<!--<ul>-->
 
 <!--        <li th:each="meme : ${meme}">-->
 <!--            <span th:text="${meme}"></span>-->
@@ -25,19 +45,20 @@
 
 
 
-    <li th:each="comment : ${comment}">
-        <span th:text="${comment}"></span>
-    </li>
+<!--    <li th:each="comment : ${comment}">-->
+<!--        <span th:text="${comment}"></span>-->
+<!--    </li>-->
 
 
-    <form action="/newComment" method="POST">
-        <h2>Add a comment</h2>
-        <input type="hidden" name="id" th:value="${id}">
-        Comment: <input type="text" name="body">
-        <input type="submit" value="add a comment">
-    </form>
+<!--    <form action="/newComment" method="POST">-->
+<!--        <h2>Add a comment</h2>-->
+<!--        <input type="hidden" name="id" th:value="${id}">-->
+<!--        Comment: <input type="text" name="body">-->
+<!--        <input type="submit" value="add a comment">-->
+<!--    </form>-->
 
-</ul>
+<!--</ul>-->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
