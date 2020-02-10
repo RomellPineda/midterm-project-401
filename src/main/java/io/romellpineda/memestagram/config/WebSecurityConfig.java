@@ -31,12 +31,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                     .csrf().disable()
                     .cors().disable()
                     .authorizeRequests()
+                //loggedinindex and loggedindevelopers files are not in use had originally planned to use them but complications in build etc could not have time to use them, originally planned to use them for duel nav bar for a logged in useer
 
                     .antMatchers("/", "/css/**", "/images/**", "/loggedinindex", "/developers", "/loggedindevelopers",
                             "/signup",

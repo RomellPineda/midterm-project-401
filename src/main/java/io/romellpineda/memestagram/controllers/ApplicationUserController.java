@@ -33,11 +33,15 @@ public class ApplicationUserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
+    //if used websecurityconfig with log out successful url wouldnt need to go through this much code
+
     @PostMapping("/loggingout")
     public RedirectView loggedout(){
         return new RedirectView("logout");
     }
 
+    //should of called it singup to come across to new users looking at code to make more sense
     @PostMapping("/join")
     public RedirectView createNewApplicationUser(String username, String password, String profilePicture, String bio, String firstName){
         ApplicationUser newUser = new ApplicationUser(username, passwordEncoder.encode(password), profilePicture, bio, firstName);
@@ -48,6 +52,7 @@ public class ApplicationUserController {
 
         return new RedirectView("/userprofile");
     }
+
 
     @GetMapping("/users/{id}")
     public String showUserDetails(@PathVariable long id, Principal p, Model m){
@@ -74,7 +79,7 @@ public class ApplicationUserController {
         }
     }
 
-
+    //should call it logging in to make more sense to people looking at the code
     @PostMapping("/logged")
     public RedirectView authententicatedUser(Principal p, Model m) {
         if (p != null) {
