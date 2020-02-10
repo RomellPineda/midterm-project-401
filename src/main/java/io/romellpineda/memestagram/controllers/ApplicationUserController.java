@@ -37,6 +37,7 @@ public class ApplicationUserController {
     public RedirectView loggedout(){
         return new RedirectView("logout");
     }
+//    could have used camelCase in these names so it reads a bit better
 
     @PostMapping("/join")
     public RedirectView createNewApplicationUser(String username, String password, String profilePicture, String bio, String firstName){
