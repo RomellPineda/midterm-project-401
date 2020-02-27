@@ -1,7 +1,7 @@
 # midterm-project-401
 
 ## Team Members
-* Sergey Voltov
+* Sergey Voytov
 * Joshua Deforrest
 * Romell Pineda
 * Daesy Stephens
